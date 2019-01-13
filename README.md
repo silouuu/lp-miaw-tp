@@ -1,27 +1,21 @@
-# TpAngular
+# LP MIAW - TP Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.1.
+Ce projet est developpé par les étudiants de la Licence Professionnelle des Métiers de l'Informatique: Applications Web.
+Il est la mise en pratique des cours d'Angular reçu lors de leur cursus en Développement Web.
 
-## Development server
+## Installation
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### Pré-requis
+*Pour fonctionner correctement, le projet nécessite Node 8.x minimum et @angular/cli sur votre machine.*
 
-## Code scaffolding
+Cloner le projet:
+```git clone https://github.com/khylias/lp-miaw-tp```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Lancer le projet en mode développement
+```ng serve```
 
-## Build
+Compiler le projet en production
+```ng build```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Developpé avec
+* [Angular 7.2](https://angular.io) - comme framework front-end
