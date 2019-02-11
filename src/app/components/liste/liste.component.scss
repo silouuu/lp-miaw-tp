@@ -4,9 +4,14 @@
 
 .container {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .card-player {
  max-width: 400px;
  margin: 10px;
+}
+
+mat-toolbar {
+  padding: 10px 0;
 }

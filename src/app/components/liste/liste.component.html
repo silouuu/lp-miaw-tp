@@ -1,5 +1,28 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <mat-form-field>
+      <mat-select [(value)]="filterPoste" placeholder="Poste">
+        <mat-option value="Pillier">Pillier</mat-option>
+        <mat-option value="3eme ligne">3eme ligne</mat-option>
+        <mat-option value="centre">Centre</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="text" (change)="filterFirstName = $event.target.value" placeholder="Prénom">
+    </mat-form-field>
+    <button mat-flat-button color="accent" type="button" (click)="loadJoueurs()">Rechercher</button>
+
+    <button type="button" [disabled]="page <= 1" mat-button (click)="page = page - 1; loadJoueurs()">
+      <mat-icon>keyboard_arrow_left</mat-icon>
+    </button>
+    {{ page }}
+    <button type="button" mat-button (click)="page = page + 1; loadJoueurs()">
+      <mat-icon>keyboard_arrow_right</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
 <section class="container">
-  <mat-card *ngFor="let joueur of joueurs" [ngClass]="{'is-absent': joueur.absent}"  class="card-player">
+  <mat-card *ngFor="let joueur of joueurs" [ngClass]="{'is-absent': joueur.absent}" class="card-player">
     <mat-card-header>
       <mat-card-title>{{ joueur.firstName }} {{ joueur.lastName | uppercase }}</mat-card-title>
     </mat-card-header>

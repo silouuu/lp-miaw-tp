@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 
 import { Joueur } from './../../models';
+import { ApiService } from './../../services';
 
 import { NgxSmartModalService } from 'ngx-smart-modal';
 @Component({
@@ -8,12 +9,17 @@ import { NgxSmartModalService } from 'ngx-smart-modal';
   templateUrl: './liste.component.html',
   styleUrls: ['./liste.component.scss']
 })
-export class ListeComponent implements OnInit, AfterViewInit{
+export class ListeComponent implements OnInit, AfterViewInit {
   public joueurs: Joueur[] = [];
   public selected: Joueur;
   public openDetail = false;
+  public filterPoste: string;
+  public filterFirstName: string;
 
-  constructor(private ngxSmartModalService: NgxSmartModalService) { }
+  public page = 1;
+  public limit = 10;
+
+  constructor(private ngxSmartModalService: NgxSmartModalService, private apiService: ApiService) { }
 
   ngOnInit() {
     this.loadJoueurs();
@@ -27,38 +33,9 @@ export class ListeComponent implements OnInit, AfterViewInit{
   }
 
   loadJoueurs() {
-    this.joueurs.push(
-      {
-        id: 'j1',
-        firstName: 'Levani',
-        lastName: 'BOTIA',
-        poste: '3eme ligne',
-        taille: '1m60',
-        birthdayDate: '1990-10-12',
-        absent: true,
-        profilPicture: 'https://www.staderochelais.com/sites/stade-rochelais/files/styles/squared_persona/public/persona/profil/botia-1538408110.png?itok=31LR2fNd'
-      },
-      {
-        id: 'j2',
-        firstName: 'Mike',
-        lastName: 'CORBEL',
-        poste: 'Pillier',
-        taille: '1m80',
-        birthdayDate: '1989-03-30',
-        absent: false,
-        profilPicture: 'https://www.staderochelais.com/sites/stade-rochelais/files/styles/squared_persona/public/persona/profil/corbel-1538407568.png?itok=WTGDTTLg'
-      },
-      {
-        id: 'j2',
-        firstName: 'Mohamed',
-        lastName: 'BOUGHANMI',
-        poste: 'Pillier',
-        taille: '1m94',
-        birthdayDate: '1985-06-18',
-        absent: false,
-        profilPicture: 'https://www.staderochelais.com/sites/stade-rochelais/files/styles/squared_persona/public/persona/profil/boughanmi-1538407931.png?itok=ZDwRJGR_'
-      }
-    );
+    this.apiService.getData(this.filterPoste, this.filterFirstName, this.page, this.limit).subscribe(response => {
+      this.joueurs = response;
+    });
   }
 
   public select(j: Joueur) {
