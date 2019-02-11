@@ -8,10 +8,15 @@
 }
 
 .card-player {
- max-width: 400px;
+ max-width: 20%;
  margin: 10px;
 }
 
 mat-toolbar {
   padding: 10px 0;
+}
+
+mat-toolbar-row {
+  display: flex;
+  justify-content: space-between;
 }

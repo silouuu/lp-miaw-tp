@@ -16,10 +16,13 @@ export class ListeComponent implements OnInit, AfterViewInit {
   public filterPoste: string;
   public filterFirstName: string;
 
+  public editedJoueur: Joueur;
+  public openEdit = false;
+
   public page = 1;
   public limit = 10;
 
-  constructor(private ngxSmartModalService: NgxSmartModalService, private apiService: ApiService) { }
+  constructor(public ngxSmartModalService: NgxSmartModalService, private apiService: ApiService) { }
 
   ngOnInit() {
     this.loadJoueurs();
@@ -29,6 +32,11 @@ export class ListeComponent implements OnInit, AfterViewInit {
     this.ngxSmartModalService.getModal('detailsModal').onAnyCloseEventFinished.subscribe(() => {
       this.selected = null;
       this.openDetail = false;
+    });
+
+    this.ngxSmartModalService.getModal('editPlayer').onAnyCloseEventFinished.subscribe(() => {
+      this.openEdit = false;
+      this.editedJoueur = null;
     });
   }
 
@@ -48,4 +56,13 @@ export class ListeComponent implements OnInit, AfterViewInit {
     const id = this.joueurs.findIndex(j => j.id === this.selected.id);
     this.joueurs[id].absent = event;
   }
+
+  public openEditForm(j?: Joueur) {
+    if (j) {
+      this.editedJoueur = j;
+    }
+    this.openEdit = true;
+    this.ngxSmartModalService.open('editPlayer');
+  }
+
 }

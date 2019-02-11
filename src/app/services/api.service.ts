@@ -36,4 +36,12 @@ export class ApiService {
 
     return this.http.get<Joueur[]>('http://localhost:3000/joueurs', options);
   }
+
+  addPlayer(data): Observable<any> {
+    return this.http.post('http://localhost:3000/joueurs', data);
+  }
+
+  updatePlayer(id, data): Observable<any> {
+    return this.http.patch('http://localhost:3000/joueurs/' + id, data);
+  }
 }

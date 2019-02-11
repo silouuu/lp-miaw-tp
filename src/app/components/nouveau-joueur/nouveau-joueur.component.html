@@ -1,0 +1,32 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <mat-form-field>
+    <input matInput type="text" formControlName="firstName" placeholder="Prénom">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="text" formControlName="lastName" placeholder="Nom">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput [matDatepicker]="picker" placeholder="Date de naissance" formControlName="birthdayDate">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    <mat-error *ngIf="form.get('birthdayDate').hasError('isTooYoung')">
+      L'âge minimum requis est de 18 ans.
+    </mat-error>
+  </mat-form-field>
+
+  <div formGroupName="social">
+    <mat-form-field>
+      <input matInput type="text" formControlName="facebook" placeholder="facebook">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="text" formControlName="twitter" placeholder="twitter">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="text" formControlName="instagram" placeholder="instagram">
+    </mat-form-field>
+  </div>
+
+  <button mat-flat-button color="accent" type="submit" [disabled]="form.invalid">Ajouter</button>
+</form>

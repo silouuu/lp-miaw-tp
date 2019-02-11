@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { ListeComponent } from './liste.component';
 import { DetailsModule } from './details/details.module';
+import { NouveauJoueurModule } from '../nouveau-joueur/nouveau-joueur.module';
 import { ApiModule } from './../../modules';
 
 import { NgxSmartModalModule } from 'ngx-smart-modal';
@@ -29,7 +30,8 @@ import { NgxSmartModalModule } from 'ngx-smart-modal';
     NgxSmartModalModule.forChild(),
 
     DetailsModule,
-    ApiModule
+    ApiModule,
+    NouveauJoueurModule
   ],
   declarations: [ListeComponent],
   exports: [ListeComponent]
