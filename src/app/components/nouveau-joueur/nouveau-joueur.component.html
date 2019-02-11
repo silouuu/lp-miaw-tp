@@ -11,6 +11,9 @@
     <input matInput [matDatepicker]="picker" placeholder="Date de naissance" formControlName="birthdayDate">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
+    <mat-error *ngIf="form.get('birthdayDate').hasError('isTooYoung')">
+      L'âge minimum requis est de 18 ans.
+    </mat-error>
   </mat-form-field>
 
   <div formGroupName="social">
