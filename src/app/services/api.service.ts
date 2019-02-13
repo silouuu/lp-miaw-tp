@@ -36,4 +36,5 @@ export class ApiService {
 
     return this.http.get<Joueur[]>('http://localhost:3000/joueurs', options);
   }
+
 }
