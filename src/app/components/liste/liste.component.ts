@@ -19,7 +19,7 @@ export class ListeComponent implements OnInit, AfterViewInit {
   public page = 1;
   public limit = 10;
 
-  constructor(private ngxSmartModalService: NgxSmartModalService, private apiService: ApiService) { }
+  constructor(public ngxSmartModalService: NgxSmartModalService, private apiService: ApiService) { }
 
   ngOnInit() {
     this.loadJoueurs();
@@ -48,4 +48,9 @@ export class ListeComponent implements OnInit, AfterViewInit {
     const id = this.joueurs.findIndex(j => j.id === this.selected.id);
     this.joueurs[id].absent = event;
   }
+
+  public openEditForm() {
+    this.ngxSmartModalService.open('editPlayer');
+  }
+
 }
