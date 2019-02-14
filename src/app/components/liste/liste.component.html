@@ -42,6 +42,9 @@
     </mat-card-content>
     <mat-card-actions>
       <button mat-flat-button color="primary" type="button" (click)="select(joueur)">Détails</button>
+      <button mat-flat-button color="primary" type="button" (click)="openEditForm(joueur)">
+        <mat-icon>edit</mat-icon>
+      </button>
     </mat-card-actions>
   </mat-card>
 </section>
@@ -51,5 +54,5 @@
 </ngx-smart-modal>
 
 <ngx-smart-modal identifier="editPlayer">
-  <app-nouveau-joueur></app-nouveau-joueur>
+  <app-nouveau-joueur *ngIf="openEdit" [joueur]="editedJoueur"></app-nouveau-joueur>
 </ngx-smart-modal>
